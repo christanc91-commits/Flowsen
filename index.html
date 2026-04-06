@@ -1,4 +1,126 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowsen - Lunettes de Piscine</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #e6f1ff;
+            overflow-x: hidden;
+            background: #020c1b;
+        }
+
+        /* FOND EAU ANIMÉ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(0,198,255,0.15), transparent 60%),
+                        radial-gradient(circle at 70% 60%, rgba(29,78,216,0.2), transparent 60%),
+                        linear-gradient(120deg, #020c1b, #0a192f, #112240);
+            animation: waterMove 20s linear infinite;
+            z-index: -3;
+        }
+
+        /* REFLETS PISCINE */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: repeating-radial-gradient(circle at 50% 50%,
+                        rgba(255,255,255,0.06) 0px,
+                        rgba(255,255,255,0.06) 2px,
+                        transparent 4px,
+                        transparent 40px);
+            animation: causticsMove 12s linear infinite;
+            opacity: 0.4;
+            z-index: -2;
+            mix-blend-mode: overlay;
+        }
+
+        /* LUMIÈRE CURSEUR */
+        .cursor-light {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,198,255,0.25) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        @keyframes waterMove {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(-5%, -5%); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes causticsMove {
+            0% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-10%, -10%) scale(1.2); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        /* NAVBAR FIXE */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(2,12,27,0.85);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        header {
+            margin-top: 70px;
+            background: linear-gradient(90deg, #0a192f, #112240, #1d4ed8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* MENU MOBILE */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+            }
+
             nav.active {
                 display: flex;
             }
