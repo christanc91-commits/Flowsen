@@ -1,1 +1,104 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowsen - À propos</title>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial;
+    color:#e6f1ff;
+    background:#020c1b;
+    overflow:hidden;
+}
+
+/* FOND EAU */
+body::before {
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:linear-gradient(120deg,#020c1b,#0a192f,#112240);
+    animation:move 20s infinite linear;
+    z-index:-1;
+}
+
+@keyframes move {
+    0%{transform:translate(0,0);}
+    50%{transform:translate(-5%,-5%);}
+    100%{transform:translate(0,0);}
+}
+
+/* NAV */
+nav {
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    background:rgba(2,12,27,0.8);
+    padding:15px;
+}
+
+nav a {
+    color:#64ffda;
+    text-decoration:none;
+}
+
+/* CONTENU */
+.container {
+    padding:120px 20px;
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+/* CARTE */
+.card {
+    background:rgba(17,34,64,0.8);
+    padding:30px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,198,255,0.2);
+}
+
+h1 {
+    color:#00c6ff;
+}
+
+p {
+    line-height:1.6;
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h1>À propos de Flowsen</h1>
+        <p>
+        Flowsen est une marque dédiée aux nageurs exigeants.  
+        Nous créons des lunettes de piscine alliant technologie, confort et design premium.
+        </p>
+
+        <p>
+        Inspirée par le mouvement de l’eau, notre mission est d’offrir une vision parfaite
+        sous la surface.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
