@@ -158,7 +158,57 @@
             will-change: transform;
         }
 
-        .products {
+        /* ANIMATION SCROLL */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+    filter: blur(10px);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ANIMATIONS INTERNES PRODUIT */
+.product img {
+    transform: scale(0.8);
+    transition: transform 0.8s ease;
+}
+
+.product h3 {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.product p {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.product.active img {
+    transform: scale(1);
+}
+
+.product.active h3 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.product.active p {
+    opacity: 1;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* DÉLAI CASCADE PRODUITS */
+.products .product:nth-child(1) { transition-delay: 0.1s; }
+.products .product:nth-child(2) { transition-delay: 0.3s; }
+.products .product:nth-child(3) { transition-delay: 0.5s; }
+.products .product:nth-child(4) { transition-delay: 0.7s; }
+
+.products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
@@ -263,20 +313,20 @@
     <p>Lunettes de piscine haute performance</p>
 </header>
 
-<section class="hero">
+<section class="hero reveal">
     <h1>Voyez sous l'eau comme jamais auparavant</h1>
     <p style="opacity:0.8; margin-top:10px;">Une vision claire, un confort ultime, une performance FlowSen.</p>
 </section>
 
-<section id="produits" class="products">
-    <div class="product">
+<section id="produits" class="products reveal">
+    <div class="product reveal">
         <img src="https://via.placeholder.com/250" style="width:100%; border-radius:10px; margin-bottom:10px;">
         <h3>Flowsen Pro</h3>
         <p>Anti-buée • Ultra confort</p>
         <p><strong>29,99€</strong></p>
     </div>
 
-    <div class="product">
+    <div class="product reveal">
         <img src="https://via.placeholder.com/250" style="width:100%; border-radius:10px; margin-bottom:10px;">
         <h3>Flowsen Elite</h3>
         <p>Vision HD • Design premium</p>
@@ -284,7 +334,7 @@
     </div>
 </section>
 
-<footer>
+<footer class="reveal">
     <p>&copy; 2026 Flowsen</p>
 </footer>
 
@@ -332,6 +382,31 @@ cards.forEach(card => {
     });
 
 });
+
+
+
+// ANIMATION AU SCROLL
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+
+            // STAGGER PRODUITS ULTRA PRÉCIS
+            if (entry.target.classList.contains('products')) {
+                const items = entry.target.querySelectorAll('.product');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, index * 200);
+                });
+            }
+        }
+    });
+});
+
+reveals.forEach(el => observer.observe(el));
 
 </script>
 
@@ -404,50 +479,5 @@ a { color:#64ffda; text-decoration:none; }
 <br><br>
 <a href="index.html">← Retour à l'accueil</a>
 </div>
-</body>
-</html>
-
-
-<div class="container">
-
-<h1>Contactez-nous</h1>
-
-<div class="contact-grid">
-
-<!-- FORMULAIRE -->
-<form>
-    <h3>Envoyer un message</h3>
-    <input type="text" placeholder="Nom" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Votre message" rows="5" required></textarea>
-    <button>Envoyer</button>
-</form>
-
-<!-- INFOS -->
-<div class="info">
-    <h3>Informations</h3>
-    <p>📧 Email : contact@flowsen.com</p>
-    <p>📞 Téléphone : +33 6 00 00 00 00</p>
-    <p>📍 Adresse : Cherbourg, France</p>
-
-    <!-- CARTE -->
-    <iframe 
-    src="https://www.google.com/maps?q=Cherbourg&output=embed">
-    </iframe>
-
-    <!-- RESEAUX -->
-    <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">TikTok</a>
-    </div>
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
 </body>
 </html>
