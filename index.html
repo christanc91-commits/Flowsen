@@ -160,6 +160,25 @@
             text-align: center;
             padding: 20px;
         }
+
+        /* EFFET TEXTE LUMINEUX */
+        h1 {
+            text-shadow: 0 0 10px rgba(0,198,255,0.8),
+                         0 0 20px rgba(0,198,255,0.6),
+                         0 0 40px rgba(29,78,216,0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(0,198,255,0.6),
+                             0 0 20px rgba(0,198,255,0.4);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0,198,255,1),
+                             0 0 40px rgba(29,78,216,0.8);
+            }
+        }
     </style>
 </head>
 <body>
