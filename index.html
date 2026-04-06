@@ -8,34 +8,40 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f9ff;
-            color: #333;
+            background: linear-gradient(180deg, #0a192f, #020c1b);
+            color: #e6f1ff;
         }
 
         header {
-            background: linear-gradient(90deg, #0077cc, #00c6ff);
+            background: linear-gradient(90deg, #0a192f, #112240, #1d4ed8);
             color: white;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         nav {
             display: flex;
             justify-content: center;
             gap: 20px;
-            background: #005fa3;
+            background: linear-gradient(90deg, #020c1b, #0a192f);
             padding: 10px;
         }
 
         nav a {
-            color: white;
+            color: #64ffda;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffffff;
         }
 
         .hero {
             text-align: center;
             padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(29,78,216,0.2), transparent);
         }
 
         .hero h1 {
@@ -50,11 +56,17 @@
         }
 
         .product {
-            background: white;
-            border-radius: 10px;
+            background: linear-gradient(145deg, #112240, #020c1b);
+            border-radius: 15px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(29,78,216,0.4);
         }
 
         .product img {
@@ -63,7 +75,7 @@
         }
 
         .product button {
-            background: #0077cc;
+            background: linear-gradient(90deg, #1d4ed8, #00c6ff);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -72,11 +84,15 @@
             cursor: pointer;
         }
 
+        .product button:hover {
+            opacity: 0.9;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            background: #003d66;
-            color: white;
+            background: linear-gradient(90deg, #020c1b, #0a192f);
+            color: #8892b0;
         }
     </style>
 </head>
@@ -130,4 +146,3 @@
 
 </body>
 </html>
-
